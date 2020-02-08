@@ -7,6 +7,8 @@ class UsersController < ApplicationController
       end
       repo_response = conn.get('/user/repos')
 
+
+require "pry"; binding.pry
       repo_hash = JSON.parse(repo_response.body, symbolize_names: true)[0..4]
       @repos = repo_hash.map do |repo_data|
         Repo.new(repo_data)

@@ -34,5 +34,9 @@
         <% end %>
       </section>
     </section>
+  <% else %>
+
+    <%= link_to "Login",
+  "https://github.com/login/oauth/authorize?client_id=#{ENV['RAILS_CLIENT_ID']}&scope=repo" %>
   <% end %>
 </section>

@@ -42,4 +42,7 @@ Rails.application.routes.draw do
   end
 
   resources :user_videos, only:[:create, :destroy]
+
+  # change to github_controller since session already created
+  get '/auth/github/callback', to: 'github#create'
 end
