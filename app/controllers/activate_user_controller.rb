@@ -1,17 +1,19 @@
 class ActivateUserController < ApplicationController
 
   def update
-    email = "#{params[:email]}.#{params[:format]}"
-    user = User.find_by(email: email)
+    @email = "#{params[:email]}.#{params[:format]}"
+    user = User.find_by(email: @email)
     user.toggle!(:active)
+    redirect_to '/dashboard'
   end
 
   def new; end
 
   def create
     user = current_user
+    handle = params[:github_handle]
     service = GithubService.new
-    invitee = service.find_user(user, params[:github_handle])
+    invitee = service.find_user(user, handle)
     if invitee[:email]
       @invitee = invitee
       UserActivateMailer.invite(user, @invitee).deliver_now

@@ -52,5 +52,16 @@ describe GithubService, :vcr do
         expect(connection.class).to eq Faraday::Connection
       end
     end
+
+    context "#find_user" do
+      it "finds a user given their github handle" do
+        handle = "madelynrr"
+        user = create(:user, token: ENV['GITHUB_TOKEN'])
+
+        search = subject.find_user(user, handle)
+
+        expect(search[:login]).to eq('madelynrr')
+      end
+    end
   end
 end
