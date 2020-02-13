@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
       redirect_to dashboard_path
+      flash[:notice] = "Logged in as #{user.first_name}"
     else
       flash[:error] = 'Username already exists'
       render :new
