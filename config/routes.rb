@@ -49,4 +49,5 @@ Rails.application.routes.draw do
   get '/activateuser/:email', to: 'activate_user#update'
   get '/invite', to: 'activate_user#new'
   post '/invite', to: 'activate_user#create'
+  get 'admin/tutorials/:id', to: "tutorials#show"
 end
