@@ -6,6 +6,11 @@ class GithubService
     end
   end
 
+  def find_user(user, handle)
+    user_response = conn(user).get("/users/#{handle}")
+    invitee = JSON.parse(user_response.body, symbolize_names: true)
+  end
+
   def repos_by_user(user)
     repo_response = conn(user).get('/user/repos')
     JSON.parse(repo_response.body, symbolize_names: true)[0..4]
