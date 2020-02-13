@@ -1,10 +1,14 @@
 class GithubService
-
   def conn(user)
     Faraday.new(url: 'https://api.github.com') do |f|
       f.headers['Authorization'] = "token #{user.token}"
       f.adapter Faraday.default_adapter
     end
+  end
+
+  def find_user(user, handle)
+    user_response = conn(user).get("/users/#{handle}")
+    JSON.parse(user_response.body, symbolize_names: true)
   end
 
   def repos_by_user(user)
