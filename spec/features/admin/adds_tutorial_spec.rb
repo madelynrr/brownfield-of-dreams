@@ -13,6 +13,5 @@ describe 'An admin user can add tutorials' do
 
     tutorial = Tutorial.last
     expect(current_path).to eq("/tutorials/#{tutorial.id}")
-
   end
 end
