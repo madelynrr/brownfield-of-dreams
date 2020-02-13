@@ -4,6 +4,7 @@ class ActivateUserController < ApplicationController
     email = "#{params[:email]}.#{params[:format]}"
     user = User.find_by(email: email)
     user.toggle!(:active)
+    redirect_to '/dashboard'
   end
 
   def new; end
