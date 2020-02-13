@@ -3,7 +3,7 @@ class TutorialsController < ApplicationController
     tutorial = Tutorial.find(params[:id])
     if tutorial.videos.count > 0
       @facade = TutorialFacade.new(tutorial, params[:video_id])
-    elsif current_user.role == "admin"
+    elsif current_user.role == 'admin'
       @facade = TutorialFacade.new(tutorial, params[:video_id])
     else
       flash[:error] = 'This tutorial is still in progress.'

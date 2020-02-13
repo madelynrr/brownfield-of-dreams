@@ -1,5 +1,4 @@
 class GithubController < ApplicationController
-
   def create
     user = User.find(current_user.id)
     user.update(user_hash)
@@ -9,15 +8,15 @@ class GithubController < ApplicationController
   protected
 
   def auth_hash
-    request.env["omniauth.auth"]
+    request.env['omniauth.auth']
   end
 
   def user_handle
-    request.env["omniauth.auth"]["extra"]["raw_info"]["login"]
+    request.env['omniauth.auth']['extra']['raw_info']['login']
   end
 
   def user_hash
-    {token: auth_hash["credentials"]["token"],
-     github_handle: user_handle}
+    { token: auth_hash['credentials']['token'],
+      github_handle: user_handle }
   end
 end

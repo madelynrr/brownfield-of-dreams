@@ -10,7 +10,7 @@ class User < ApplicationRecord
   enum role: %i[default admin]
   has_secure_password
 
-  def self.has_handle?(handle)
+  def self.handle?(handle)
     if find_by(github_handle: handle)
       true
     else
@@ -19,8 +19,6 @@ class User < ApplicationRecord
   end
 
   def friends?(github_handle)
-    if friends.where(github_handle: github_handle).length > 0
-      true
-    end
+    true unless friends.where(github_handle: github_handle).empty?
   end
 end
