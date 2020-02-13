@@ -8,7 +8,7 @@ class GithubService
 
   def find_user(user, handle)
     user_response = conn(user).get("/users/#{handle}")
-    invitee = JSON.parse(user_response.body, symbolize_names: true)
+    JSON.parse(user_response.body, symbolize_names: true)
   end
 
   def repos_by_user(user)
