@@ -18,5 +18,11 @@ class User < ApplicationRecord
     end
   end
 
+  def is_friends?(github_handle)
+    if friends.where(github_handle: github_handle).length > 0
+      true
+    end
+  end
+
 
 end
