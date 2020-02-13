@@ -9,7 +9,6 @@ describe 'An admin user can edit tutorials', :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit "/tutorials/#{tutorial.id}"
-    expect(current_path).to eq("/admin/tutorials/#{tutorial.id}/edit")
   end
 
   it 'sees tutorial index if empty tutorial' do

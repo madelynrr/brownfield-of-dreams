@@ -12,7 +12,7 @@ describe 'An admin user can add tutorials' do
     click_on "Save"
 
     tutorial = Tutorial.last
-    expect(current_path).to eq(tutorials_path(tutorial))
+    expect(current_path).to eq("/tutorials/#{tutorial.id}")
 
   end
 end

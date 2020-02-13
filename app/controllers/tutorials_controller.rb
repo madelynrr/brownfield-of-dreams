@@ -4,7 +4,7 @@ class TutorialsController < ApplicationController
     if tutorial.videos.count > 0
       @facade = TutorialFacade.new(tutorial, params[:video_id])
     elsif current_user.role == "admin"
-      redirect_to "/admin/tutorials/#{tutorial.id}/edit"
+      @facade = TutorialFacade.new(tutorial, params[:video_id])
     else
       flash[:error] = 'This tutorial is still in progress.'
       redirect_to '/tutorials'
