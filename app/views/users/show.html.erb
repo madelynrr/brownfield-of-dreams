@@ -21,11 +21,13 @@
       <% end %>
 
       <h2>Followers</h2>
+      <section  class = "followers">
       <% search_results.followers.each do |follower| %>
-        <section  class = "followers">
+          <section id="follower-<%= follower.name %>">
           <%= link_to follower.name, follower.link %>
           <% if User.has_handle?(follower.name) %>
-            <%= link_to "Add as Friend" %>
+          <%= link_to "Add as Friend", "/friendships/#{follower.name}" %>
+          </section>
           <% end %>
         </section>
       <% end %>
@@ -35,7 +37,7 @@
         <section class="following">
             <%= link_to following.name, following.link %>
             <% if User.has_handle?(following.name) %>
-              <%= link_to "Add as Friend" %>
+              <%= link_to "Add as Friend", "/friendships/#{following.name}"  %>
             <% end %>
           </section>
         <% end %>
