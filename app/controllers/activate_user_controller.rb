@@ -15,10 +15,9 @@ class ActivateUserController < ApplicationController
       @invitee = invitee
       UserActivateMailer.invite(user, @invitee).deliver_now
       flash[:notice] = 'Successfully sent invite!'
-      redirect_to '/dashboard'
     else
       flash[:error] = "The Github user you selected doesn't have an email address associated with their account."
-      redirect_to '/dashboard'
     end
+    redirect_to '/dashboard'
   end
 end

@@ -28,8 +28,8 @@ RSpec.describe User, type: :model do
       OmniAuth.config.test_mode = true
       user_1 = create(:user, github_handle: "jfangonilo")
 
-      expect(User.has_handle?(user_1.github_handle)).to be(true)
-      expect(User.has_handle?("danmoran-pro")).to be(false)
+      expect(User.handle?(user_1.github_handle)).to be(true)
+      expect(User.handle?("danmoran-pro")).to be(false)
     end
   end
 end
