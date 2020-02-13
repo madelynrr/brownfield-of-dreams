@@ -10,7 +10,7 @@ describe "as a logged in user", :vcr do
 
     within ".github" do
       expect(page).to have_content("Followers")
-      expect(page).to have_css(".followers", count: 3)
+      expect(page).to have_css(".followers", count: 1)
     end
 
     within first(".followers") do

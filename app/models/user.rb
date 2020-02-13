@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :friendships
+  has_many :friends, through: :friendships
   has_many :user_videos
   has_many :videos, through: :user_videos
 
@@ -16,5 +18,9 @@ class User < ApplicationRecord
     end
   end
 
-
+  def is_friends?(github_handle)
+    if friends.where(github_handle: github_handle).length > 0
+      true
+    end
+  end
 end

@@ -1,6 +1,4 @@
 class GithubDataView
-
-# Make private
   attr_reader :user
 
   def initialize(user)
@@ -27,5 +25,4 @@ class GithubDataView
       Following.new(following_data)
     end
   end
-
 end
