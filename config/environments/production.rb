@@ -99,11 +99,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.sendgrid.net',
     port:                 '587',
-    domain:               'https://brownfield-of-dreams-mw.herokuapp.com/m',
+    domain:               'https://brownfield-of-dreams-mw.herokuapp.com/',
     user_name:            ENV["SENDGRID_USERNAME"],
     password:             ENV["SENDGRID_PASSWORD"],
     authentication:       'plain',
     enable_starttls_auto: true
   }
-
 end
