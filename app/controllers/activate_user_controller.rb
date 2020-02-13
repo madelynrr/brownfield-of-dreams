@@ -2,7 +2,7 @@ class ActivateUserController < ApplicationController
 
   def update
     @email = "#{params[:email]}.#{params[:format]}"
-    user = User.find_by(email: email)
+    user = User.find_by(email: @email)
     user.toggle!(:active)
     redirect_to '/dashboard'
   end
