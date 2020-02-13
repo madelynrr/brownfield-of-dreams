@@ -46,5 +46,5 @@ Rails.application.routes.draw do
 
   get 'auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'github#create'
-  post '/notifications', to: 'notifications#create'
+  get '/activateuser/:email', to: 'activate_user#new'
 end
