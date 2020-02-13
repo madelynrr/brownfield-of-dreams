@@ -1,3 +1,7 @@
-<h1>Your account has been activated!</h1>
+<h1> Invite a GitHub User </h1>
+<%= form_tag '/invite' do %>
 
-<%= link_to 'Dashboard', '/dashboard' %>
+  <%= label_tag :github_handle %>
+  <%= text_field_tag :github_handle %><br>
+  <%= submit_tag 'Send Invite' %>
+<% end %>
