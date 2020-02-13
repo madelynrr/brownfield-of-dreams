@@ -37,4 +37,13 @@ namespace :import do
       end
     end
   end
+
+  task :videos, [:videos] => :environment do
+    tutorials = Tutorial.all
+    tutorials.videos.each do |video|
+      if video.position == nil
+        video.update(position: index)
+      end
+    end
+  end
 end
