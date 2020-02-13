@@ -3,7 +3,7 @@
   <% if current_user.active %>
     <h3>Status: Active</h3>
   <% else %>
-    <h3>"This account has not yet been activated. Please check your email."</h3>
+    <h3>This account has not yet been activated. Please check your email.</h3>
   <% end %>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
@@ -30,8 +30,8 @@
       <% search_results.followers.each do |follower| %>
           <section id="follower-<%= follower.name %>">
           <%= link_to follower.name, follower.link %>
-          <% if User.has_handle?(follower.name) && !@user.is_friends?(follower.name) %>
-          <%= link_to "Add as Friend", "/friendships/#{follower.name}" %>
+          <% if User.has_handle?(follower.name) && !@user.friends?(follower.name) %>
+          <%= link_to 'Add as Friend', "/friendships/#{follower.name}" %>
           </section>
           <% end %>
         </section>
@@ -41,7 +41,7 @@
         <% search_results.following.each do |following| %>
         <section class="following">
             <%= link_to following.name, following.link %>
-            <% if User.has_handle?(following.name) && !@user.is_friends?(following.name) %>
+            <% if User.has_handle?(following.name) && !@user.friends?(following.name) %>
               <%= link_to "Add as Friend", "/friendships/#{following.name}"  %>
             <% end %>
           </section>
